@@ -1,0 +1,39 @@
+﻿@model ProductListViewModel
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">List</h1>
+
+  
+
+<div class="row marginTop">
+    <h1>@Model.CurrentCategory</h1>
+        <div class="row">
+    @foreach (var product in Model.Products)
+    {
+            
+
+                <div class="col-md-3">
+
+                    <div class="card my-3" style="width: 18rem;">
+                        <img class="card-img-top" style=" height:15rem" src="~/Images/@product.ImageUrl" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <h5 class="card-title">Price :@product.Price</h5>
+                            <p class="card-text">@product.ShortDescription</p>
+                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@product.ProductId" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+
+
+       
+    }
+        </div>
+</div>
+   
+   
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

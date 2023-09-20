@@ -1,0 +1,17 @@
+﻿<li class="dropdown">
+    <a 
+       class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        @foreach (var category in Model)
+        {
+            <li>
+                <a asp-controller="EShop" asp-action="List"
+                   asp-route-categoryId="@category.CategoryId">@category.CategoryName</a>
+            </li>
+        }
+        <li class="divider"></li>
+        <li>
+            <a asp-controller="EShop" asp-action="List" asp-route-category="0">View all products</a>
+        </li>
+    </ul>
+</li>

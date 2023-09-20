@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+
+
+    <div class="row">
+        @foreach(var p in Model)
+        {
+        <div class="col-md-3">
+
+            <div class="card my-3" style="width: 18rem;">
+                <img class="card-img-top" style=" height:15rem" src="~/Images/@p.ImageUrl" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Name</h5>
+                    <h5 class="card-title">Price :@p.Price</h5>
+                    <p class="card-text">@p.ShortDescription</p>
+                    <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@p.ProductId" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
