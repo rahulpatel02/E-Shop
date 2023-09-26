@@ -2,6 +2,7 @@ using E_Shop.Data;
 using E_Shop.Data.Interfaces;
 using E_Shop.Data.Models;
 using E_Shop.Data.Repositorys;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,8 +18,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 //DI
+   builder.Services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
   builder.Services.AddTransient<IProductRepository,ProductRepository>();
 builder.Services.AddTransient<ICategoryRepository,CategoryRepository>();
+builder.Services.AddTransient<IOrderRepository,OrderRepository>();
+builder.Services.AddScoped<IAccountRepository,AccountRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
 builder.Services.AddScoped(sp => ShoppingCart.GetCart(sp));
 
@@ -41,6 +45,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 app.UseSession();
 
 app.MapControllerRoute(

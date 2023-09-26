@@ -19,7 +19,8 @@ namespace E_Shop.Data.Models
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
 
             var context = services.GetService<AppDbContext>();
-            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            //  string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            string cartId = "1";
             session.SetString(cartId, cartId); 
             return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
@@ -27,8 +28,8 @@ namespace E_Shop.Data.Models
         public void AddToCart(Product product, int amount)
         {
             var shoppingCartItem=_context.ShoppingCartItems.SingleOrDefault(
-                s=>s.Product.ProductId== product.ProductId && s.ShoppingCartId ==ShoppingCartId);
-            if (shoppingCartItem != null)
+                s=>s.Product.ProductId== product.ProductId && s.ShoppingCartId.Equals( ShoppingCartId));
+            if (shoppingCartItem == null)
             {
                 shoppingCartItem = new ShoppingCartItem
                 {
