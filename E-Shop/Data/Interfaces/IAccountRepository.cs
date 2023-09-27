@@ -10,5 +10,7 @@ namespace E_Shop.Data.Interfaces
         public  Task<Microsoft.AspNetCore.Identity.SignInResult> UserLogin(LoginViewModel loginViewModel);
 
         public Task<String> UserName(LoginViewModel loginViewModel);
+
+        public Task LogoutAsync();
     }
 }

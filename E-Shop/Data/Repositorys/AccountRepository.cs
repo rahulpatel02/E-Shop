@@ -30,11 +30,13 @@ namespace E_Shop.Data.Repositorys
                 Email = signupViewModel.Email,
                 UserName=signupViewModel.Email,
                 PhoneNumber = signupViewModel.PhoneNumber,
-                CreatedDate = DateTime.Now,
+                CreatedDate = signupViewModel.CreatedDate,
             };
           var result= await _userManager.CreateAsync(user,signupViewModel.Password);
             return result; 
         }
+
+      
 
         public async Task<SignInResult> UserLogin(LoginViewModel loginViewModel)
         {            
@@ -54,6 +56,11 @@ namespace E_Shop.Data.Repositorys
 
               }
             return "false";
+        }
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
     }
 }

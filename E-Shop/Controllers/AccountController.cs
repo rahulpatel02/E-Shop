@@ -21,6 +21,7 @@ namespace E_Shop.Controllers
         [HttpPost]
         public async Task< IActionResult> Signup(SignupViewModel signupViewModel)
         {
+             signupViewModel.CreatedDate = DateTime.Now;
             if(ModelState.IsValid)
             {
              var result=  await _accountRepository.CreateUser(signupViewModel);
@@ -61,5 +62,12 @@ namespace E_Shop.Controllers
             }
             return View(loginViewModel);
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _accountRepository.LogoutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
