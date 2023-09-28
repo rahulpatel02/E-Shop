@@ -80,6 +80,7 @@ namespace E_Shop.Data.Models
                 .ToList()); 
         }
 
+        //use for Checkout 
         public void ClearCart()
         {
             var cartItems=_context.ShoppingCartItems.Where(cart=>cart.ShoppingCartId==ShoppingCartId);

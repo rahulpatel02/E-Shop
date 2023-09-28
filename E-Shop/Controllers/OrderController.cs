@@ -1,4 +1,5 @@
-﻿using E_Shop.Data.Interfaces;
+﻿using Microsoft.AspNetCore;
+using E_Shop.Data.Interfaces;
 using E_Shop.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,6 +43,12 @@ namespace E_Shop.Controllers
 		{
 			ViewBag.CheckoutCompleteMessage = "Thanks for your order!:) ";
 			return View();
+		}
+
+		public IActionResult ViewOrder()
+		{
+			var result=_orderRepository.GetUserOrder();
+			return View(result);
 		}
 	}
 }

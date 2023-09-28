@@ -38,7 +38,7 @@ namespace E_Shop.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult RemoveToShoppingCart(int productId)
+        public RedirectToActionResult RemoveFromShoppingCart(int productId)
         {
             var selectProduct = _productRepository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (selectProduct != null)
@@ -47,6 +47,8 @@ namespace E_Shop.Controllers
             }
             return RedirectToAction("Index");
         }
+
+       
 
     }
 }
