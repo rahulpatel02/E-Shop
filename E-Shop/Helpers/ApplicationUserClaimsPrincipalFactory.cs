@@ -9,7 +9,7 @@ namespace E_Shop.Helpers
        
     public class ApplicationUserClaimsPrincipalFactory :UserClaimsPrincipalFactory<User,IdentityRole>
     {
-        public static  string UserId { get; set; }
+       
         public ApplicationUserClaimsPrincipalFactory(UserManager<User> userManager,
             RoleManager<IdentityRole> roleManager, IOptions<IdentityOptions> options):base(userManager, roleManager, options)
         {
@@ -21,7 +21,7 @@ namespace E_Shop.Helpers
                 identity.AddClaim(new Claim("UserId", user.Id ?? ""));
                 identity.AddClaim(new Claim("UserFirstName", user.FirstName ?? ""));
                 identity.AddClaim(new Claim("UserLastName", user.LastName ?? ""));
-                 UserId = user.Id;
+                 
             return identity;
         }
     }

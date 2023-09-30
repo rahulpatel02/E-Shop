@@ -23,7 +23,7 @@
                             <h5 class="card-title">@product.Name</h5>
                             <h5 class="card-title">Price :@product.Price</h5>
                             <p class="card-text">@product.ShortDescription</p>
-                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@product.ProductId" class="btn btn-primary">Go somewhere</a>
+                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@product.ProductId" class="btn btn-primary">Add To Cart</a>
                         </div>
                     </div>
                 </div>
@@ -35,5 +35,5 @@
 </div>
    
    
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p style="text-align:center">Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

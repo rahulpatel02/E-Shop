@@ -35,7 +35,7 @@ namespace E_Shop.Controllers
             {
                 _shoppingCart.AddToCart(selectProduct,1);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
 
         public RedirectToActionResult RemoveFromShoppingCart(int productId)

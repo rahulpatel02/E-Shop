@@ -50,5 +50,17 @@ namespace E_Shop.Controllers
 			var result=_orderRepository.GetUserOrder();
 			return View(result);
 		}
+		 public   IActionResult OrderDetails(int orderId)
+		{
+			var orderDetails =  _orderRepository.GetOrderDetails(orderId);
+			return View(orderDetails);
+		}
+
+		public IActionResult CancleOrder(int orderId)
+		{
+			_orderRepository.CancelOrder(orderId);
+			return RedirectToAction("ViewOrder");
+
+		}
 	}
 }

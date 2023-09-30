@@ -29,11 +29,9 @@
 					<td>@item.ProductName</td>
 					<td>@item.Qty</td>
 					<td>@item.Price</td>
-					
-					
-					<td><a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="UpdateForm" asp-route-Id="">Update</a></td>
-					<td><a class="btn btn-sm btn-danger" asp-controller="Home" asp-action="DeleteEmployee" asp-route-Id="">Delete</a></td>
 
+					<td><a class="btn btn-sm btn-primary" asp-controller="Order" asp-action="OrderDetails" asp-route-orderId="@item.OrderId">Order Details</a></td>
+					<td><a class="btn btn-sm btn-danger" asp-controller="Order" asp-action="CancleOrder" asp-route-orderId="@item.OrderId">Cancel Order</a></td>
 				</tr>
 			}
 

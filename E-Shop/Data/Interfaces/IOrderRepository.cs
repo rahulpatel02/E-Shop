@@ -8,6 +8,11 @@ namespace E_Shop.Data.Interfaces
 		void CreateOrder (Order order);
  
 		 IEnumerable<OrderViewModel> GetUserOrder ();
-		
+
+		 void CancelOrder (int orderId);
+
+		OrderDetailsViewModel GetOrderDetails(int orderId);
+
+
 	}
 }
