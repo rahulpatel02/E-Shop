@@ -109,6 +109,7 @@ namespace E_Shop.Data.Repositorys
        
            
             var list = new List<ProductNameAndOrdersMapper>();
+            decimal subTotal = 0;
             foreach (var item in ordersItems)
             {
                 string Name =string.Empty;
@@ -120,6 +121,7 @@ namespace E_Shop.Data.Repositorys
                         break;
                     }
                 }
+                subTotal += item.Price * item.Amount;
                 list.Add(new ProductNameAndOrdersMapper()
                 {
                     OrderId = item.OrderId,
@@ -129,10 +131,15 @@ namespace E_Shop.Data.Repositorys
                     TotalAmountPerUnit = item.Price * item.Amount,
                 });
             }
+            decimal taxAmount =(subTotal * 18) / 100;
             var orderDetailsViewModel = new OrderDetailsViewModel
             {
                 userOrderInfo = userOrderInfo,
-                ProductNameAndOrdersMapper = list
+                ProductNameAndOrdersMapper = list,
+                subTotal = subTotal,
+                taxAmount = taxAmount,
+                total=subTotal+taxAmount
+                
             };
             return orderDetailsViewModel;
 		}

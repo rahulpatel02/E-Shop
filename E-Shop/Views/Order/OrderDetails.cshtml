@@ -3,13 +3,16 @@
     ViewData["Title"] = "Order Details";
 }
 
-<div >
+<div class="container" >
     <div class="card mt-5">
         <div class="card-body">
-            <div class="container mb-5 mt-3">
+            <div class="container mb-1">
                 <div class="row d-flex align-items-baseline">
                     <div class="col-xl-9">
-                        <p style="color: #7e8d9f;font-size: 20px;">Invoice >> <strong>ID: #123-123</strong></p>
+                    
+                        <img style="height:10rem" src="~/Images/eshoplogo.png" />
+                      
+                     @*    <p style="color: #7e8d9f;font-size: 20px;">Order >> <strong>ID: #123-@Model.userOrderInfo.OrderId</strong></p> *@
                     </div>
                     <div class="col-xl-3 float-end">
                         <a class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark">
@@ -26,7 +29,7 @@
                     <div class="col-md-12">
                         <div class="text-center">
                             <i class="fab fa-mdb fa-4x ms-0" style="color:#5d9fc5 ;"></i>
-                            <p class="pt-0">Order Details</p>
+                            <h4 class="pt-0 fw-bold" style="color:#5d9fc5 ;">Order Details</h4>
                         </div>
 
                     </div>
@@ -35,20 +38,24 @@
                     <div class="row">
                         <div class="col-xl-8">
                             <ul class="list-unstyled">
-                                <li class="text-muted">To: <span style="color:#5d9fc5 ;">@Model.userOrderInfo.FirstName @Model.userOrderInfo.LastName</span></li>
+                                <li class="text-muted fw-bold">To: <span style="color:#5d9fc5 ;">@Model.userOrderInfo.FirstName @Model.userOrderInfo.LastName</span></li>
                                 <li class="text-muted">@Model.userOrderInfo.Address</li>
-                                <li class="text-muted">@Model.userOrderInfo.State, @Model.userOrderInfo.Country</li>
-                                <li class="text-muted"><i class="fas fa-phone"></i> @Model.userOrderInfo.PhoneNumber</li>
+                                <li class="text-muted">@Model.userOrderInfo.State, @Model.userOrderInfo.Country (@Model.userOrderInfo.ZipCode)</li>
+                                <li class="text-muted">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                    </svg>+91-
+                                    @Model.userOrderInfo.PhoneNumber</li>
                             </ul>
                         </div>
                         <div class="col-xl-4">
                             <p class="text-muted">Invoice</p>
                             <ul class="list-unstyled">
                                 <li class="text-muted">
-                                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">ID:</span>#123-456
+                                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">ID:</span>#123-@Model.userOrderInfo.OrderId
                                 </li>
                                 <li class="text-muted">
-                                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Creation Date: </span>@Model.userOrderInfo.OrderPlaced
+                                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Order Date: </span>@Model.userOrderInfo.OrderPlaced
                                 </li>
                                 <li class="text-muted">
                                     <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
@@ -97,24 +104,20 @@
                         </div>
                         <div class="col-xl-3">
                             <ul class="list-unstyled">
-                                <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>$1110</li>
-                                <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Tax(15%)</span>$111</li>
+                                <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>&#8377 @Model.subTotal</li>
+                                <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Tax(18%)</span>&#8377 @Model.taxAmount</li>
                             </ul>
                             <p class="text-black float-start">
-                                <span class="text-black me-3"> Total Amount</span><span style="font-size: 25px;">$1221</span>
+                                <span class="text-black me-3 fw-bold"> Total Amount</span><span style="font-size: 25px;">&#8377 @Model.total</span>
                             </p>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-xl-10">
+                        <div class=" text-center">
                             <p>Thank you for your purchase</p>
                         </div>
-                        <div class="col-xl-2">
-                            <button type="button" class="btn btn-primary text-capitalize"
-                                    style="background-color:#60bdf3 ;">
-                                Pay Now
-                            </button>
+                       
                         </div>
                     </div>
 
